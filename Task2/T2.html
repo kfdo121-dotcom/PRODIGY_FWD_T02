@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Staff Ledger – Employee Admin</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section id="auth" class="auth">
+  <h1 id="aTitle">Staff Ledger</h1>
+  <p id="aSub"></p>
+  <div class="f"><label for="aUser">Username</label><input id="aUser" autocomplete="username" maxlength="40"></div>
+  <div class="f"><label for="aPass">Password</label><input id="aPass" type="password" autocomplete="current-password" maxlength="128"></div>
+  <div class="f hide" id="confWrap"><label for="aConf">Confirm password</label><input id="aConf" type="password" autocomplete="new-password" maxlength="128"></div>
+  <p class="err" id="aErr" role="alert"></p>
+  <button class="primary" id="aBtn" style="width:100%"></button>
+  <div class="note" id="aNote"></div>
+  <p style="margin:.75rem 0 0;font-size:13px"><button class="link" id="resetBtn">Reset all data</button></p>
+</section>
+
+<div id="app" class="hide">
+  <header>
+    <h1>Staff Ledger</h1>
+    <span class="chip" id="who"></span>
+    <button id="revealBtn" aria-pressed="false">Show sensitive fields</button>
+    <button id="outBtn">Sign out</button>
+  </header>
+  <main>
+    <div class="bar">
+      <input id="q" type="search" placeholder="Search by name, email, department or title" aria-label="Search employees">
+      <button class="primary" id="addBtn">Add employee</button>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>Name</th><th>Email</th><th>Department</th><th>Title</th><th>Status</th><th>Salary</th><th>National ID</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table><div class="empty hide" id="empty">No employees yet. Add the first record.</div></div>
+  </main>
+</div>
+
+<dialog id="formDlg"><form id="form" method="dialog" novalidate>
+  <h2 id="fTitle"></h2><div class="grid" id="fields"></div>
+  <div class="row"><button type="button" id="fCancel">Cancel</button><button class="primary" type="submit">Save employee</button></div>
+</form></dialog>
+
+<dialog id="delDlg">
+  <h2>Delete employee?</h2><p id="delMsg"></p>
+  <div class="row"><button id="delNo">Keep record</button><button class="danger" id="delYes">Delete permanently</button></div>
+</dialog>
+<div id="toast" role="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
